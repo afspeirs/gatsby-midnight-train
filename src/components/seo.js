@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 const SEO = ({
@@ -16,9 +16,6 @@ const SEO = ({
           siteMetadata {
             title
             description
-            social {
-              twitter
-            }
           }
         }
       }
@@ -30,7 +27,7 @@ const SEO = ({
   return (
     <Helmet
       htmlAttributes={{ lang }}
-      title={title}
+      defaultTitle={site.siteMetadata.title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
@@ -54,10 +51,6 @@ const SEO = ({
           content: 'summary',
         },
         {
-          name: 'twitter:creator',
-          content: site.siteMetadata.social.twitter,
-        },
-        {
           name: 'twitter:title',
           content: title,
         },
@@ -66,7 +59,9 @@ const SEO = ({
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <title>{title}</title>
+    </Helmet>
   );
 };
 
@@ -74,13 +69,14 @@ SEO.defaultProps = {
   description: '',
   lang: 'en',
   meta: [],
+  title: '',
 };
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default SEO;
