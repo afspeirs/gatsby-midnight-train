@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 
 import Layout from '../components/layout';
@@ -36,6 +37,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             {post.frontmatter.date}
           </p>
         </header>
+        {/* eslint-disable-next-line react/no-danger */}
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
           style={{
@@ -76,6 +78,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       </nav>
     </Layout>
   );
+};
+
+BlogPostTemplate.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
+  pageContext: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default BlogPostTemplate;
