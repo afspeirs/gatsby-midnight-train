@@ -5,25 +5,25 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-const IndexPage = ({ data, location }) => {
+const BandMembers = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO />
+      <SEO title="Band Members" />
 
-      <h2>Home</h2>
-      <p>Welcome to Midnight Train</p>
+      <h2>Band Members</h2>
+      <p>Please find a list of our Band Members below</p>
     </Layout>
   );
 };
 
-IndexPage.propTypes = {
+BandMembers.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
   location: PropTypes.instanceOf(Object).isRequired,
 };
 
-export default IndexPage;
+export default BandMembers;
 
 export const pageQuery = graphql`
   query {
