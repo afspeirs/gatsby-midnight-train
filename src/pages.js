@@ -1,26 +1,26 @@
 export default [
   {
     slug: '/',
-    title: 'home',
+    title: 'Home',
   },
   {
     slug: '/blog',
-    title: 'blog',
+    title: 'Blog',
   },
   {
     slug: '/events',
-    title: 'events',
+    title: 'Events',
   },
   {
     slug: '/videos',
-    title: 'videos',
+    title: 'Videos',
   },
   {
     slug: '/band-members',
-    title: 'band members',
+    title: 'Band Members',
   },
   {
     slug: '/contact-us',
-    title: 'contact us',
+    title: 'Contact Us',
   },
 ];

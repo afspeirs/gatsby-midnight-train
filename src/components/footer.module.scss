@@ -12,9 +12,9 @@
 }
 
 .footer-link {
-  text-decoration: none;
-  text-transform: uppercase;
   color: var(--clr-background);
+  text-decoration: none;
+  white-space: nowrap;
 
   &:focus,
   &:hover {
