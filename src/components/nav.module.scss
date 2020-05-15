@@ -68,6 +68,10 @@
   padding: 0;
   margin: 0;
 }
+.nav-list-expanded {
+  composes: nav-list;
+  display: flex;
+}
 
 .nav-list-item {
   display: flex;
@@ -96,7 +100,24 @@
 }
 .nav-current-link {
   composes: nav-link;
-  border-bottom-color: var(--clr-background);
+  background-color: var(--clr-secondary);
+}
+
+
+@media (max-width: 960px) {
+  .nav-list {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: var(--clr-primary);
+    opacity: 0.95;
+  }
+  .nav-link {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (min-width: 960px) {
