@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Footer from './footer';
 import Nav from './nav';
+import '../styles/index.scss';
+import styles from './layout.module.scss';
 
 const Layout = ({ children, location }) => (
-  <div>
-    <header>
+  <div className={styles.container}>
+    <header className={styles.header}>
       <Nav pathname={location.pathname} />
     </header>
 
-    <main>{children}</main>
+    <main className={styles.content}>
+      {children}
+    </main>
 
-    <footer>
-      © 2020, Built with
-      {' '}
-      <a href="https://www.gatsbyjs.org">Gatsby</a>
-    </footer>
+    <Footer pathname={location.pathname} />
   </div>
 );
 

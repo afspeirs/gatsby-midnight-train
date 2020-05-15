@@ -1,0 +1,34 @@
+.footer {
+  margin-top: auto;
+  background-color: var(--clr-primary);
+  color: var(--clr-background);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 128px;
+}
+
+.footer-link {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--clr-background);
+
+  &:focus,
+  &:hover {
+    color: var(--clr-secondary);
+  }
+}
+.footer-current-link {
+  composes: footer-link;
+  text-decoration: underline;
+}
+
+@media (max-width: 960px) {
+  .footer-content {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}

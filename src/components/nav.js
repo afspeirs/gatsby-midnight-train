@@ -2,41 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
-const pages = [
-  {
-    slug: '/',
-    title: 'home',
-  },
-  {
-    slug: '/blog',
-    title: 'blog',
-  },
-  {
-    slug: '/events',
-    title: 'events',
-  },
-  {
-    slug: '/videos',
-    title: 'videos',
-  },
-  {
-    slug: '/band-members',
-    title: 'band members',
-  },
-  {
-    slug: '/contact-us',
-    title: 'contact us',
-  },
-];
+import pages from '../pages';
+import { content } from './layout.module.scss';
+import styles from './nav.module.scss';
 
 const Nav = ({ pathname }) => (
-  <nav>
-    <Link to="/">LOGO</Link>
+  <nav className={`${content} ${styles.nav}`}>
+    <Link
+      className={styles.navLogo}
+      to="/"
+    >
+      LOGO
+    </Link>
 
-    <ul>
+    <button
+      type="button"
+      className={styles.navToggle}
+      aria-controls="menu"
+      aria-expanded="false"
+      aria-label="Menu"
+    >
+      <span />
+    </button>
+
+    <ul className={styles.navList}>
       {pages.map((page) => (
-        <li key={page.slug}>
-          <Link to={page.slug} className={pathname === page.slug ? 'current-page' : ''}>{page.title}</Link>
+        <li key={page.slug} className={styles.navListItem}>
+          <Link
+            className={pathname === page.slug ? styles.navCurrentLink : styles.navLink}
+            to={page.slug}
+          >
+            {page.title}
+          </Link>
         </li>
       ))}
     </ul>
