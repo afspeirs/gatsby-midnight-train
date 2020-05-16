@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 
 import pages from '../pages';
@@ -25,7 +25,7 @@ const Footer = () => {
       <div className={`${content} ${styles.footerContent}`}>
         <nav>
           {pages.map((page, index) => (
-            <>
+            <Fragment key={page.slug}>
               <Link
                 to={page.slug}
                 className={styles.footerLink}
@@ -33,8 +33,8 @@ const Footer = () => {
               >
                 {page.title}
               </Link>
-              {pages.length - 1 !== index ? ' - ' : ''}
-            </>
+              {pages.length - 1 !== index ? ' | ' : ''}
+            </Fragment>
           ))}
         </nav>
         <span>
