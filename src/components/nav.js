@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import pages from '../pages';
 import { content } from './layout.module.scss';
 import styles from './nav.module.scss';
 
-const Nav = ({ pathname }) => {
+const Nav = () => {
   const [toggle, setToggle] = useState(false);
 
   const onToggle = () => {
@@ -37,7 +36,8 @@ const Nav = ({ pathname }) => {
         {pages.map((page) => (
           <li key={page.slug} className={styles.navListItem}>
             <Link
-              className={pathname === page.slug ? styles.navCurrentLink : styles.navLink}
+              className={styles.navLink}
+              activeClassName={styles.activeNavLink}
               to={page.slug}
             >
               {page.title}
@@ -47,11 +47,6 @@ const Nav = ({ pathname }) => {
       </ul>
     </nav>
   );
-};
-
-
-Nav.propTypes = {
-  pathname: PropTypes.string.isRequired,
 };
 
 export default Nav;

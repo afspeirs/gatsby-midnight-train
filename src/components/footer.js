@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import pages from '../pages';
 import styles from './footer.module.scss';
 import { content } from './layout.module.scss';
 
-const Footer = ({ pathname }) => (
+const Footer = () => (
   <footer className={styles.footer}>
     <div className={`${content} ${styles.footerContent}`}>
       <nav>
@@ -14,7 +13,8 @@ const Footer = ({ pathname }) => (
           <>
             <Link
               to={page.slug}
-              className={pathname === page.slug ? styles.footerCurrentLink : styles.footerLink}
+              className={styles.footerLink}
+              activeClassName={styles.activeFooterLink}
             >
               {page.title}
             </Link>
@@ -33,10 +33,5 @@ const Footer = ({ pathname }) => (
     </div>
   </footer>
 );
-
-Footer.propTypes = {
-  pathname: PropTypes.string.isRequired,
-};
-
 
 export default Footer;

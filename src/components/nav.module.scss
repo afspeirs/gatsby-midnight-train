@@ -98,8 +98,7 @@
     background-color: var(--clr-secondary);
   }
 }
-.nav-current-link {
-  composes: nav-link;
+.active-nav-link {
   background-color: var(--clr-secondary);
 }
 

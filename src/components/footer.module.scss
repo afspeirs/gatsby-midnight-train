@@ -21,8 +21,7 @@
     color: var(--clr-secondary);
   }
 }
-.footer-current-link {
-  composes: footer-link;
+.active-footer-link {
   text-decoration: underline;
 }
 
