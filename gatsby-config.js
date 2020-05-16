@@ -1,11 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: 'Midnight Train',
-    description: 'A starter blog demonstrating what Gatsby can do.',
-    siteUrl: 'https://gatsby-starter-blog-demo.netlify.com/',
+    description: 'Midnight Train play a blend of classic up tempo blues with a mix of sometimes surprising songs infused with their unique style and sound.',
+    siteUrl: 'https://midnight-train.speirs.dev/',
     social: {
       facebook: 'originalmidnighttrain',
     },
+    author: 'Andy Speirs',
   },
   plugins: [
     {
