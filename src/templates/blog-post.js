@@ -7,20 +7,21 @@ import SEO from '../components/seo';
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark;
-  const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
+
       <article>
         <header>
           <h1>{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
+
         {/* eslint-disable-next-line react/no-danger */}
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr />
