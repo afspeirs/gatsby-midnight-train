@@ -18,3 +18,13 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/pages/index-content.md"
+        label: "Home"
+        name: "home"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "index-content" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Introduction", name: "introText", widget: "markdown" }
