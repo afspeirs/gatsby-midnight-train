@@ -27,4 +27,4 @@ collections:
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "index-content" }
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Introduction", name: "introText", widget: "markdown" }
+          - { label: "Body", name: "body", widget: "markdown" }
