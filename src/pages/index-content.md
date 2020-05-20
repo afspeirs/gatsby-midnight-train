@@ -1,9 +1,7 @@
 ---
 title: Midnight Train
 ---
-Midnight Train play a blend of classic up tempo blues with a mix of sometimes
-surprising songs infused with their unique style and sound to create a fun and
-infectious set-list.
+Midnight Train play a blend of classic up tempo blues with a mix of sometimes surprising songs infused with their unique style and sound to create a fun and infectious set-list.
 
 With roots going back to the original Midnight Train of the late '60's the current line up pay homage to the musical genre that gave birth to rock and roll and influenced all popular music that followed.
 
