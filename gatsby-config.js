@@ -26,6 +26,13 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        path: `${__dirname}/src/img`,
+        name: 'images',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         name: 'page-content',
         path: `${__dirname}/src/pages`,
       },
@@ -70,7 +77,7 @@ module.exports = {
         background_color: '#f5f5f5',
         theme_color: '#231F20',
         display: 'minimal-ui',
-        icon: 'content/assets/gatsby-icon.png',
+        icon: 'content/assets/midnight-train-logo.png',
       },
     },
     'gatsby-plugin-netlify-cms',

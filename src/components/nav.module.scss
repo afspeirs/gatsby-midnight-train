@@ -5,8 +5,18 @@
 }
 
 .nav-logo {
-  color: var(--clr-background);
-  line-height: 64px;
+  height: 64 - 16px;
+
+  svg {
+    height: inherit;
+    fill: var(--clr-background);
+  }
+
+  &:hover {
+    path {
+      fill: var(--clr-secondary);
+    }
+  }
 }
 
 .nav-list {

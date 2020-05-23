@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import pages from '../pages';
 import { content } from './layout.module.scss';
 import styles from './nav.module.scss';
+import pages from '../pages';
+import Logo from '../img/logo';
 
 const Nav = () => (
   <nav className={`${content} ${styles.nav}`}>
@@ -11,7 +12,7 @@ const Nav = () => (
       className={styles.navLogo}
       to="/"
     >
-      Midnight Train
+      <Logo />
     </Link>
 
     <ul className={styles.navList}>
