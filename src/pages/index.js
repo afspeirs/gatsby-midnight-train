@@ -14,7 +14,7 @@ const IndexPage = ({ data, location }) => {
 
       <h2>{content.frontmatter.title}</h2>
       {/* eslint-disable-next-line react/no-danger */}
-      <p dangerouslySetInnerHTML={{ __html: content.html }} />
+      <div dangerouslySetInnerHTML={{ __html: content.html }} />
 
     </Layout>
   );
