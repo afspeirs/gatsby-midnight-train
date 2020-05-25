@@ -7,7 +7,7 @@ import SEO from '../components/seo';
 
 const BandMembersPage = ({ data, location }) => {
   const content = data.content.edges[0].node;
-  const { title } = content.frontmatter;
+  const { title, members } = content.frontmatter;
 
   return (
     <Layout location={location}>
@@ -17,6 +17,18 @@ const BandMembersPage = ({ data, location }) => {
 
       {/* eslint-disable-next-line react/no-danger */}
       <div dangerouslySetInnerHTML={{ __html: content.html }} />
+
+      <div>
+        {members.map((member) => (
+          <article key={member.name}>
+            <header>
+              <h3>{member.name}</h3>
+              <small>{member.instrument}</small>
+            </header>
+            <p>{member.description}</p>
+          </article>
+        ))}
+      </div>
     </Layout>
   );
 };
@@ -37,6 +49,11 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             title
+            members {
+              name
+              instrument
+              description
+            }
           }
           html
         }
