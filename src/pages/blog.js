@@ -6,22 +6,27 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const BlogPage = ({ data, location }) => {
-  const posts = data.allMarkdownRemark.edges;
+  const posts = data.blog.edges;
+  const content = data.content.edges[0].node;
+  const { title } = content.frontmatter;
 
   return (
     <Layout location={location}>
-      <SEO title="Blog" />
+      <SEO title={title} />
 
-      <h2>Blog</h2>
+      <h2>{title}</h2>
+
+      {/* eslint-disable-next-line react/no-danger */}
+      <div dangerouslySetInnerHTML={{ __html: content.html }} />
 
       {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug;
+        const postTitle = node.frontmatter.title || node.fields.slug;
 
         return (
           <article key={node.fields.slug}>
             <header>
               <h3>
-                <Link to={node.fields.slug}>{title}</Link>
+                <Link to={node.fields.slug}>{postTitle}</Link>
               </h3>
               <small>{node.frontmatter.date}</small>
             </header>
@@ -49,8 +54,8 @@ export default BlogPage;
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(
-      filter: { fields: { slug: { regex: "/^((?!-content).)*$/"} } }
+    blog: allMarkdownRemark(
+      filter: { fields: { slug: { regex: "/^(\/blog\/)/"} } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
@@ -64,6 +69,18 @@ export const pageQuery = graphql`
             title
             description
           }
+        }
+      }
+    }
+    content: allMarkdownRemark(
+      filter: { fields: { slug: { eq: "/pages/blog/" } } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+          }
+          html
         }
       }
     }
