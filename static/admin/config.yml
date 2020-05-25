@@ -21,10 +21,45 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "src/pages/index-content.md"
+      - file: "content/pages/index.md"
         label: "Home"
         name: "home"
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "index-content" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "content/pages/blog.md"
+        label: "Blog"
+        name: "blog"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-content" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "content/pages/events.md"
+        label: "Events"
+        name: "events"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "events-content" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "content/pages/videos.md"
+        label: "Videos"
+        name: "videos"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "videos-content" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "content/pages/band-members.md"
+        label: "Band Members"
+        name: "band-members"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "band-members-content" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "content/pages/contact-us.md"
+        label: "Contact Us"
+        name: "contact-us"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "contact-us-content" }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
