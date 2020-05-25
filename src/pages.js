@@ -4,23 +4,23 @@ export default [
     title: 'Home',
   },
   {
-    slug: '/blog',
+    slug: '/blog/',
     title: 'Blog',
   },
   {
-    slug: '/events',
+    slug: '/events/',
     title: 'Events',
   },
   {
-    slug: '/videos',
+    slug: '/videos/',
     title: 'Videos',
   },
   {
-    slug: '/band-members',
+    slug: '/band-members/',
     title: 'Band Members',
   },
   {
-    slug: '/contact-us',
+    slug: '/contact-us/',
     title: 'Contact Us',
   },
 ];
