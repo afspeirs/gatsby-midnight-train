@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
-import styles from '../styles/card.module.scss';
+import BlogCard from '../components/blog-cards';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
@@ -20,30 +20,7 @@ const BlogPage = ({ data, location }) => {
       {/* eslint-disable-next-line react/no-danger */}
       <div dangerouslySetInnerHTML={{ __html: content.html }} />
 
-      <div className={styles.cardContainer}>
-        {posts.map(({ node }) => {
-          const postTitle = node.frontmatter.title || node.fields.slug;
-
-          return (
-            <article key={node.fields.slug} className={styles.card}>
-              <header>
-                <h3>
-                  <Link to={node.fields.slug}>{postTitle}</Link>
-                </h3>
-                <small>{node.frontmatter.date}</small>
-              </header>
-              <section>
-                <p
-                  // eslint-disable-next-line react/no-danger
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
-              </section>
-            </article>
-          );
-        })}
-      </div>
+      <BlogCard posts={posts} />
     </Layout>
   );
 };

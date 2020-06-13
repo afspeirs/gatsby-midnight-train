@@ -12,7 +12,7 @@ const Layout = ({ children, location }) => (
       <Nav pathname={location.pathname} />
     </header>
 
-    <main className={styles.content}>
+    <main className={`${styles.content} ${styles.main}`}>
       {children}
     </main>
 
