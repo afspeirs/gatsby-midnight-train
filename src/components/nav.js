@@ -1,34 +1,49 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 
 import { content } from './layout.module.scss';
 import styles from './nav.module.scss';
-import pages from '../pages';
 import Logo from '../img/logo';
 
-const Nav = () => (
-  <nav className={`${content} ${styles.nav}`}>
-    <Link
-      className={styles.navLogo}
-      to="/"
-    >
-      <Logo />
-    </Link>
+const Nav = () => {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            menuLinks {
+              link
+              name
+            }
+          }
+        }
+      }
+    `,
+  );
 
-    <ul className={styles.navList}>
-      {pages.map((page) => (
-        <li key={page.slug} className={styles.navListItem}>
-          <Link
-            className={styles.navLink}
-            activeClassName={styles.activeNavLink}
-            to={page.slug}
-          >
-            {page.title}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </nav>
-);
+  const { menuLinks } = site.siteMetadata;
+
+  return (
+    <nav className={`${content} ${styles.nav}`}>
+      <Link className={styles.navLogo} to="/">
+        <Logo />
+      </Link>
+
+      <ul className={styles.navList}>
+        {menuLinks.map((page) => (
+          <li key={page.link} className={styles.navListItem}>
+            <Link
+              activeClassName={styles.activeNavLink}
+              className={styles.navLink}
+              to={page.link}
+            >
+              {page.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
 
 export default Nav;

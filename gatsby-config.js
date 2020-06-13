@@ -7,6 +7,32 @@ module.exports = {
       facebook: 'originalmidnighttrain',
     },
     author: 'Andy Speirs',
+    menuLinks: [
+      {
+        link: '/',
+        name: 'Home',
+      },
+      {
+        link: '/blog/',
+        name: 'Blog',
+      },
+      {
+        link: '/events/',
+        name: 'Events',
+      },
+      {
+        link: '/videos/',
+        name: 'Videos',
+      },
+      {
+        link: '/band-members/',
+        name: 'Band Members',
+      },
+      {
+        link: '/contact-us/',
+        name: 'Contact Us',
+      },
+    ],
   },
   plugins: [
     {

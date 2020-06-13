@@ -1,15 +1,18 @@
 import React, { Fragment } from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 
-import pages from '../pages';
 import styles from './footer.module.scss';
 import { content } from './layout.module.scss';
 
 const Footer = () => {
-  const data = useStaticQuery(graphql`
+  const { site } = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
+          menuLinks {
+            link
+            name
+          }
           social {
             facebook
           }
@@ -18,31 +21,31 @@ const Footer = () => {
     }
   `);
 
-  const { facebook } = data.site.siteMetadata.social;
+  const { menuLinks, social } = site.siteMetadata;
 
   return (
     <footer className={styles.footer}>
       <div className={`${content} ${styles.footerContent}`}>
         <nav>
-          {pages.map((page, index) => (
-            <Fragment key={page.slug}>
+          {menuLinks.map((page, index) => (
+            <Fragment key={page.link}>
               <Link
-                to={page.slug}
-                className={styles.footerLink}
                 activeClassName={styles.activeFooterLink}
+                className={styles.footerLink}
+                to={page.link}
               >
-                {page.title}
+                {page.name}
               </Link>
-              {pages.length - 1 !== index ? ' | ' : ''}
+              {menuLinks.length - 1 !== index ? ' | ' : ''}
             </Fragment>
           ))}
         </nav>
         <span>
           <a
             className={styles.footerLink}
-            href={`https://www.facebook.com/${facebook}/`}
+            href={`https://www.facebook.com/${social.facebook}/`}
           >
-            {`@${facebook}`}
+            {`@${social.facebook}`}
           </a>
         </span>
       </div>

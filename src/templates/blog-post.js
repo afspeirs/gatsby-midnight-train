@@ -16,6 +16,27 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         description={post.frontmatter.description || post.excerpt}
       />
 
+      <nav>
+        <ul
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-between',
+            listStyle: 'none',
+            padding: 0,
+          }}
+        >
+          <li>
+            <Link to="/blog/" rel="prev">
+              ←
+              {' '}
+              Back to Blog
+            </Link>
+          </li>
+        </ul>
+        <hr />
+      </nav>
+
       <article>
         <header>
           <h1>{post.frontmatter.title}</h1>
@@ -24,10 +45,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
         {/* eslint-disable-next-line react/no-danger */}
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr />
       </article>
 
       <nav>
+        <hr />
         <ul
           style={{
             display: 'flex',

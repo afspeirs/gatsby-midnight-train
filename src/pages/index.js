@@ -20,7 +20,6 @@ const IndexPage = ({ data, location }) => {
   );
 };
 
-
 IndexPage.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
   location: PropTypes.instanceOf(Object).isRequired,

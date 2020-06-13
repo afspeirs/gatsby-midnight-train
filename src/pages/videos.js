@@ -28,7 +28,6 @@ VideosPage.propTypes = {
 
 export default VideosPage;
 
-
 export const pageQuery = graphql`
   query {
     content: allMarkdownRemark(
