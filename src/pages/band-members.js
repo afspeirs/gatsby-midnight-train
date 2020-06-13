@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
+import styles from '../styles/card.module.scss';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
@@ -18,9 +19,9 @@ const BandMembersPage = ({ data, location }) => {
       {/* eslint-disable-next-line react/no-danger */}
       <div dangerouslySetInnerHTML={{ __html: content.html }} />
 
-      <div>
+      <div className={styles.cardContainer}>
         {members.map((member) => (
-          <article key={member.name}>
+          <article key={member.name} className={styles.card}>
             <header>
               <h3>{member.name}</h3>
               <small>{member.instrument}</small>
