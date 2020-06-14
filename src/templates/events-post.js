@@ -5,7 +5,7 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-const EventPostTemplate = ({ data, pageContext, location }) => {
+const EventsPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark;
   const { previous, next } = pageContext;
 
@@ -27,7 +27,7 @@ const EventPostTemplate = ({ data, pageContext, location }) => {
           }}
         >
           <li>
-            <Link to="/events/" rel="prev">
+            <Link to="/events/">
               ←
               {' '}
               Back to Events
@@ -40,14 +40,14 @@ const EventPostTemplate = ({ data, pageContext, location }) => {
       <article>
         <header>
           <h1>{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-          <p>{post.frontmatter.location}</p>
-          <p>
-            <a href={post.frontmatter.url_facebook}>
-              View event on Facebook
-            </a>
-          </p>
         </header>
+        <p>{post.frontmatter.date}</p>
+        <p>{post.frontmatter.location}</p>
+        <p>
+          <a href={post.frontmatter.url_facebook}>
+            View event on Facebook
+          </a>
+        </p>
 
         {/* eslint-disable-next-line react/no-danger */}
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -88,13 +88,13 @@ const EventPostTemplate = ({ data, pageContext, location }) => {
   );
 };
 
-EventPostTemplate.propTypes = {
+EventsPostTemplate.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
   location: PropTypes.instanceOf(Object).isRequired,
   pageContext: PropTypes.instanceOf(Object).isRequired,
 };
 
-export default EventPostTemplate;
+export default EventsPostTemplate;
 
 export const pageQuery = graphql`
   query EventsPostBySlug($slug: String!) {

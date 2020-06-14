@@ -27,7 +27,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           }}
         >
           <li>
-            <Link to="/blog/" rel="prev">
+            <Link to="/blog/">
               ←
               {' '}
               Back to Blog
