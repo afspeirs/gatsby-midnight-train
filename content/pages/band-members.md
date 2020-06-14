@@ -3,12 +3,13 @@ title: Band Members
 members:
   - name: Mike Storey
     instrument: Drums
-    description: One of the founding members of the original band, his style influenced by his early jazz and soul involvement
+    description: One of the founding members of the original band, his style
+      influenced by his early jazz and soul involvement
   - name: Ken Baker
     instrument: Bass
     description: Adding that all important drive to the rhythm section
   - name: Stewart Speirs
-    instrument: Harmonica
+    instrument: Harmonica, Rhythm Guitar, Maracas & Backing Vocals
     description: An experienced harmonica player always giving an energetic performance
   - name: Andy Lovekin
     instrument: Lead guitar
