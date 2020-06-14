@@ -25,6 +25,28 @@
   text-decoration: underline;
 }
 
+.footer-icon-container {
+  display: flex;
+}
+
+.footer-icon {
+  display: block;
+  margin-left: 24px;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--clr-background);
+  }
+
+  &:focus,
+  &:hover {
+    svg {
+      fill: var(--clr-secondary);
+    }
+  }
+}
+
 @media (max-width: 820px) {
   .footer-content {
     flex-direction: column;

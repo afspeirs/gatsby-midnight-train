@@ -4,7 +4,9 @@ module.exports = {
     description: 'Midnight Train play a blend of classic up tempo blues with a mix of sometimes surprising songs infused with their unique style and sound.',
     siteUrl: 'https://midnight-train.speirs.dev/',
     social: {
-      facebook: 'originalmidnighttrain',
+      facebook: 'https://www.facebook.com/originalmidnighttrain',
+      soundcloud: 'https://soundcloud.com/user-840933974',
+      youtube: 'https://www.youtube.com/channel/UCvIgND9mxw6_YeXCUg0hnvw',
     },
     author: 'Andy Speirs',
     menuLinks: [

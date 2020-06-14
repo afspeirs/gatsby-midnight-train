@@ -3,6 +3,9 @@ import { Link, graphql, useStaticQuery } from 'gatsby';
 
 import styles from './footer.module.scss';
 import { content } from './layout.module.scss';
+import IconFacebook from '../img/icon-facebook';
+import IconSoundcloud from '../img/icon-soundcloud';
+import IconYoutube from '../img/icon-youtube';
 
 const Footer = () => {
   const { site } = useStaticQuery(graphql`
@@ -15,6 +18,8 @@ const Footer = () => {
           }
           social {
             facebook
+            soundcloud
+            youtube
           }
         }
       }
@@ -40,12 +45,15 @@ const Footer = () => {
             </Fragment>
           ))}
         </nav>
-        <span>
-          <a
-            className={styles.footerLink}
-            href={`https://www.facebook.com/${social.facebook}/`}
-          >
-            {`@${social.facebook}`}
+        <span className={styles.footerIconContainer}>
+          <a className={styles.footerIcon} href={social.soundcloud} title="Soundcloud">
+            <IconSoundcloud />
+          </a>
+          <a className={styles.footerIcon} href={social.youtube} title="YouTube">
+            <IconYoutube />
+          </a>
+          <a className={styles.footerIcon} href={social.facebook} title="Facebook">
+            <IconFacebook />
           </a>
         </span>
       </div>
