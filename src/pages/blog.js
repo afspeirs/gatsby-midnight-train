@@ -7,9 +7,9 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const BlogPage = ({ data, location }) => {
-  const posts = data.blog.edges;
   const content = data.content.edges[0].node;
   const { title } = content.frontmatter;
+  const blogs = data.blogs.edges;
 
   return (
     <Layout location={location}>
@@ -20,7 +20,7 @@ const BlogPage = ({ data, location }) => {
       {/* eslint-disable-next-line react/no-danger */}
       <div dangerouslySetInnerHTML={{ __html: content.html }} />
 
-      <BlogCard posts={posts} />
+      <BlogCard blogs={blogs} />
     </Layout>
   );
 };
@@ -34,7 +34,7 @@ export default BlogPage;
 
 export const pageQuery = graphql`
   query {
-    blog: allMarkdownRemark(
+    blogs: allMarkdownRemark(
       filter: { fields: { slug: { regex: "/^(\/blog\/)/"} } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {

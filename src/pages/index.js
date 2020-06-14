@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 
 import BlogCards from '../components/blog-cards';
+import EventsCards from '../components/events-cards';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const IndexPage = ({ data, location }) => {
-  const posts = data.blog.edges;
   const content = data.content.edges[0].node;
+  const { blogs, events } = data;
 
   return (
     <Layout location={location}>
@@ -22,7 +23,14 @@ const IndexPage = ({ data, location }) => {
       <section>
         <h3>Most recent blog posts:</h3>
 
-        <BlogCards posts={posts} />
+        <BlogCards blogs={blogs.edges} />
+        <Link to="/blog/">View all Blog Posts</Link>
+      </section>
+
+      <section>
+        <h3>Most recent Events:</h3>
+
+        <EventsCards events={events.edges} />
         <Link to="/blog/">View all Blog Posts</Link>
       </section>
     </Layout>
@@ -38,7 +46,7 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query {
-    blog: allMarkdownRemark(
+    blogs: allMarkdownRemark(
       filter: { fields: { slug: { regex: "/^(\/blog\/)/"} } }
       limit: 2
       sort: { fields: [frontmatter___date], order: DESC }
@@ -54,6 +62,27 @@ export const pageQuery = graphql`
             title
             description
           }
+        }
+      }
+    }
+    events: allMarkdownRemark(
+      filter: { fields: { slug: { regex: "/^(\/events\/)/"} } }
+      limit: 2
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY - HH:SS")
+            title
+            location
+            url_facebook
+          }
+          html
         }
       }
     }

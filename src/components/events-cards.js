@@ -4,9 +4,9 @@ import { Link } from 'gatsby';
 
 import styles from '../styles/card.module.scss';
 
-const BlogCards = ({ blogs }) => (
+const EventsCards = ({ events }) => (
   <div className={styles.cardContainer}>
-    {blogs.map(({ node }) => {
+    {events.map(({ node }) => {
       const postTitle = node.frontmatter.title || node.fields.slug;
 
       return (
@@ -16,6 +16,8 @@ const BlogCards = ({ blogs }) => (
               <Link to={node.fields.slug}>{postTitle}</Link>
             </h3>
             <small>{node.frontmatter.date}</small>
+            <br />
+            <small>{node.frontmatter.location}</small>
           </header>
           <section>
             <p
@@ -31,8 +33,8 @@ const BlogCards = ({ blogs }) => (
   </div>
 );
 
-BlogCards.propTypes = {
-  blogs: PropTypes.instanceOf(Array).isRequired,
+EventsCards.propTypes = {
+  events: PropTypes.instanceOf(Array).isRequired,
 };
 
-export default BlogCards;
+export default EventsCards;

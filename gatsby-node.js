@@ -4,7 +4,6 @@ const { createFilePath } = require('gatsby-source-filesystem');
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const blogPost = path.resolve('./src/templates/blog-post.js');
   const result = await graphql(`
     {
       allMarkdownRemark(
@@ -30,22 +29,29 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const posts = result.data.allMarkdownRemark.edges
-    .filter((edge) => !edge.node.fields.slug.includes('/pages/'));
+    .filter((post) => !post.node.fields.slug.includes('/pages/'));
+  const blogPosts = posts.filter((post) => post.node.fields.slug.includes('/blog/'));
+  const eventsPosts = posts.filter((post) => post.node.fields.slug.includes('/events/'));
 
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node;
-    const next = index === 0 ? null : posts[index - 1].node;
+  const createPostPage = (array, type) => {
+    array.forEach((post, index) => {
+      const previous = index === array.length - 1 ? null : array[index + 1].node;
+      const next = index === 0 ? null : array[index - 1].node;
 
-    createPage({
-      component: blogPost,
-      context: {
-        slug: post.node.fields.slug,
-        previous,
-        next,
-      },
-      path: post.node.fields.slug,
+      createPage({
+        component: path.resolve(`./src/templates/${type}-post.js`),
+        context: {
+          slug: post.node.fields.slug,
+          previous,
+          next,
+        },
+        path: post.node.fields.slug,
+      });
     });
-  });
+  };
+
+  createPostPage(blogPosts, 'blog');
+  createPostPage(eventsPosts, 'events');
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
