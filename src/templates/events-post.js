@@ -13,7 +13,7 @@ const EventsPostTemplate = ({ data, pageContext, location }) => {
     <Layout location={location}>
       <SEO
         title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        description={post.excerpt}
       />
 
       <nav>
@@ -103,7 +103,6 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
-        description
         location
         url_facebook
         # url_venue

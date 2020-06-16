@@ -15,10 +15,6 @@ module.exports = {
         name: 'Home',
       },
       {
-        link: '/blog/',
-        name: 'Blog',
-      },
-      {
         link: '/events/',
         name: 'Events',
       },
@@ -42,13 +38,6 @@ module.exports = {
       options: {
         name: 'assets',
         path: `${__dirname}/content/assets`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'blog',
-        path: `${__dirname}/content/blog`,
       },
     },
     {

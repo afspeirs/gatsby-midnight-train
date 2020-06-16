@@ -23,7 +23,7 @@ const EventsCards = ({ events }) => (
             <p
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
-                __html: node.frontmatter.description || node.excerpt,
+                __html: node.excerpt,
               }}
             />
           </section>

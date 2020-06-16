@@ -30,7 +30,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const posts = result.data.allMarkdownRemark.edges
     .filter((post) => !post.node.fields.slug.includes('/pages/'));
-  const blogPosts = posts.filter((post) => post.node.fields.slug.includes('/blog/'));
   const eventsPosts = posts.filter((post) => post.node.fields.slug.includes('/events/'));
 
   const createPostPage = (array, type) => {
@@ -50,7 +49,6 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   };
 
-  createPostPage(blogPosts, 'blog');
   createPostPage(eventsPosts, 'events');
 };
 

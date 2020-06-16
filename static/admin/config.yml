@@ -8,19 +8,6 @@ public_folder: "/images"
 site_url: https://midnight-train.speirs.dev
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    label_singular: "Blog"
-    folder: "content/blog"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    editor:
-      preview: false
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
   - name: "events"
     label: "Events"
     label_singular: "Event"
@@ -44,13 +31,6 @@ collections:
         name: "home"
         fields:
           - { label: "Template Key", name: "templateKey", widget: "hidden", default: "index-content" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
-      - file: "content/pages/blog.md"
-        label: "Blog"
-        name: "blog"
-        fields:
-          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-content" }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
       - file: "content/pages/events.md"
