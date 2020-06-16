@@ -18,7 +18,7 @@
 
   &:focus,
   &:hover {
-    color: var(--clr-secondary);
+    text-decoration: underline;
   }
 }
 .active-footer-link {

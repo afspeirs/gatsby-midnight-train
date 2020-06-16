@@ -13,7 +13,7 @@ const EventsCards = ({ events }) => (
         <article key={event.fields.slug} className={styles.card}>
           <header>
             <h3>
-              <Link to={event.fields.slug}>{postTitle}</Link>
+              {postTitle}
             </h3>
             <small>{event.frontmatter.date}</small>
             <br />
@@ -27,6 +27,9 @@ const EventsCards = ({ events }) => (
               }}
             />
           </section>
+          <footer>
+            <Link to={event.fields.slug}>View Event</Link>
+          </footer>
         </article>
       );
     })}

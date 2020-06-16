@@ -26,7 +26,9 @@ const BandMembersPage = ({ data, location }) => {
               <h3>{member.name}</h3>
               <small>{member.instrument}</small>
             </header>
-            <p>{member.description}</p>
+            <section>
+              <p>{member.description}</p>
+            </section>
           </article>
         ))}
       </div>
