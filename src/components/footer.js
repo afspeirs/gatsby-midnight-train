@@ -8,23 +8,25 @@ import IconSoundcloud from '../img/icon-soundcloud';
 import IconYoutube from '../img/icon-youtube';
 
 const Footer = () => {
-  const { site } = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          menuLinks {
-            link
-            name
-          }
-          social {
-            facebook
-            soundcloud
-            youtube
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            menuLinks {
+              link
+              name
+            }
+            social {
+              facebook
+              soundcloud
+              youtube
+            }
           }
         }
       }
-    }
-  `);
+    `,
+  );
 
   const { menuLinks, social } = site.siteMetadata;
 

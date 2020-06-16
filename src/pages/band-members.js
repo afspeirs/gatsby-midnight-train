@@ -7,8 +7,8 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const BandMembersPage = ({ data, location }) => {
-  const content = data.content.edges[0].node;
-  const { title, members } = content.frontmatter;
+  const { content } = data;
+  const { members, title } = content.frontmatter;
 
   return (
     <Layout location={location}>
@@ -35,7 +35,21 @@ const BandMembersPage = ({ data, location }) => {
 };
 
 BandMembersPage.propTypes = {
-  data: PropTypes.instanceOf(Object).isRequired,
+  data: PropTypes.shape({
+    content: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        members: PropTypes.arrayOf(
+          PropTypes.shape({
+            name: PropTypes.string,
+            instrument: PropTypes.string,
+            description: PropTypes.string,
+          }),
+        ),
+        title: PropTypes.string,
+      }),
+      html: PropTypes.string,
+    }),
+  }).isRequired,
   location: PropTypes.instanceOf(Object).isRequired,
 };
 
@@ -43,22 +57,16 @@ export default BandMembersPage;
 
 export const pageQuery = graphql`
   query {
-    content: allMarkdownRemark(
-      filter: { fields: { slug: { eq: "/pages/band-members/" } } }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            members {
-              name
-              instrument
-              description
-            }
-          }
-          html
+    content: markdownRemark(fields: { slug: { eq: "/pages/band-members/" } }) {
+      frontmatter {
+        title
+        members {
+          name
+          instrument
+          description
         }
       }
+      html
     }
   }
 `;

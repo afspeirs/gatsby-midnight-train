@@ -89,7 +89,19 @@ const EventsPostTemplate = ({ data, pageContext, location }) => {
 };
 
 EventsPostTemplate.propTypes = {
-  data: PropTypes.instanceOf(Object).isRequired,
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      excerpt: PropTypes.string,
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string,
+        date: PropTypes.string,
+        location: PropTypes.string,
+        url_facebook: PropTypes.string,
+        // url_venue: PropTypes.string,
+      }),
+      html: PropTypes.string,
+    }),
+  }).isRequired,
   location: PropTypes.instanceOf(Object).isRequired,
   pageContext: PropTypes.instanceOf(Object).isRequired,
 };
@@ -101,14 +113,13 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       excerpt(pruneLength: 160)
       frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MMMM DD, YYYY - HH:SS")
         location
+        title
         url_facebook
         # url_venue
       }
       html
-      id
     }
   }
 `;

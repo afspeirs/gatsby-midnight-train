@@ -6,7 +6,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const ContactUsPage = ({ data, location }) => {
-  const content = data.content.edges[0].node;
+  const { content } = data;
   const { title } = content.frontmatter;
 
   return (
@@ -22,7 +22,14 @@ const ContactUsPage = ({ data, location }) => {
 };
 
 ContactUsPage.propTypes = {
-  data: PropTypes.instanceOf(Object).isRequired,
+  data: PropTypes.shape({
+    content: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string,
+      }),
+      html: PropTypes.string,
+    }),
+  }).isRequired,
   location: PropTypes.instanceOf(Object).isRequired,
 };
 
@@ -30,17 +37,11 @@ export default ContactUsPage;
 
 export const pageQuery = graphql`
   query {
-    content: allMarkdownRemark(
-      filter: { fields: { slug: { eq: "/pages/contact-us/" } } }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-          }
-          html
-        }
+    content: markdownRemark(fields: { slug: { eq: "/pages/contact-us/" } }) {
+      frontmatter {
+        title
       }
+      html
     }
   }
 `;

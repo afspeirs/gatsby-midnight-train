@@ -7,14 +7,14 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const IndexPage = ({ data, location }) => {
-  const content = data.content.edges[0].node;
-  const { events } = data;
+  const { content, events } = data;
+  const { title } = content.frontmatter;
 
   return (
     <Layout location={location}>
       <SEO />
 
-      <h2>{content.frontmatter.title}</h2>
+      <h2>{title}</h2>
 
       {/* eslint-disable-next-line react/no-danger */}
       <section dangerouslySetInnerHTML={{ __html: content.html }} />
@@ -22,7 +22,7 @@ const IndexPage = ({ data, location }) => {
       <section>
         <h3>Most recent Events:</h3>
 
-        <EventsCards events={events.edges} />
+        <EventsCards events={events.nodes} />
         <Link to="/events/">View all Events</Link>
       </section>
     </Layout>
@@ -30,7 +30,32 @@ const IndexPage = ({ data, location }) => {
 };
 
 IndexPage.propTypes = {
-  data: PropTypes.instanceOf(Object).isRequired,
+  data: PropTypes.shape({
+    content: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string,
+      }),
+      html: PropTypes.string,
+    }),
+    events: PropTypes.shape({
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          excerpt: PropTypes.string,
+          fields: PropTypes.shape({
+            slug: PropTypes.string,
+          }),
+          frontmatter: PropTypes.shape({
+            title: PropTypes.string,
+            date: PropTypes.string,
+            location: PropTypes.string,
+            url_facebook: PropTypes.string,
+            // url_venue: PropTypes.string,
+          }),
+          html: PropTypes.string,
+        }),
+      ),
+    }),
+  }).isRequired,
   location: PropTypes.instanceOf(Object).isRequired,
 };
 
@@ -38,37 +63,30 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query {
+    content: markdownRemark(fields: { slug: { eq: "/pages/" } }) {
+      frontmatter {
+        title
+      }
+      html
+    }
     events: allMarkdownRemark(
       filter: { fields: { slug: { regex: "/^(\/events\/)/"} } }
       limit: 2
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY - HH:SS")
-            title
-            location
-            url_facebook
-          }
-          html
+      nodes {
+        excerpt
+        fields {
+          slug
         }
-      }
-    }
-    content: allMarkdownRemark(
-      filter: { fields: { slug: { eq: "/pages/" } } }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-          }
-          html
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY - HH:SS")
+          location
+          title
+          url_facebook
+          # url_venue
         }
+        html
       }
     }
   }
