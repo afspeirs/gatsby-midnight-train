@@ -15,7 +15,7 @@ const EventsCards = ({ events }) => (
             <h3>
               {postTitle}
             </h3>
-            <small>{event.frontmatter.date}</small>
+            <time>{event.frontmatter.date}</time>
             <br />
             <small>{event.frontmatter.location}</small>
           </header>

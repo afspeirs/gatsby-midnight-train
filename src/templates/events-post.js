@@ -41,7 +41,7 @@ const EventsPostTemplate = ({ data, pageContext, location }) => {
         <header>
           <h1>{post.frontmatter.title}</h1>
         </header>
-        <p>{post.frontmatter.date}</p>
+        <time>{post.frontmatter.date}</time>
         <p>{post.frontmatter.location}</p>
         <p>
           <a href={post.frontmatter.url_facebook}>
